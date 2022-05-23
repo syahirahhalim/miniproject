@@ -4,4 +4,4 @@
 
 [![Deploy](https://github.com/syahirahhalim/miniproject/actions/workflows/deploy.yaml/badge.svg)](https://github.com/syahirahhalim/miniproject/actions/workflows/deploy.yaml)
 
-![Coverage](https://mehmehmeh.sgp1.digitaloceanspaces.com/coverage/miniproject/jacoco.svg?branch=main&service=github))
+![Coverage](https://mehmehmeh.sgp1.digitaloceanspaces.com/coverage/miniproject/jacoco.svg?branch=master&service=github)
