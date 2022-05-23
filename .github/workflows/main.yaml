@@ -25,7 +25,7 @@ jobs:
       with:
         access_key: ${{ secrets.ACCESS_KEY }}
         secret_key: ${{ secrets.SECRET_KEY }}
-        space_name: meh
+        space_name: mehmehmeh
         space_region: sgp1
         source: .github/badges/jacoco.svg
         out_dir: coverage/${{ github.event.repository.name }}
