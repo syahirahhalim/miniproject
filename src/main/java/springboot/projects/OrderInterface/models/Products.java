@@ -6,7 +6,15 @@ public class Products {
     private String name; 
     private int price;
     private String status;
-    private String createdAt;
+    private String created_at;
+
+    public Products(int id, String name, int price, String status, String created_at) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.status = status;
+        this.created_at = created_at;
+    }
 
     public int getId() {
         return this.id;
@@ -40,11 +48,7 @@ public class Products {
         this.status = status;
     }
 
-    public String getCreatedAt() {
-        return this.createdAt;
-    }
+    public String getCreated_at() { return created_at; }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
+    public void setCreated_at(String created_at) { this.created_at = created_at; }
 }

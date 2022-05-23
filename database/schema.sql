@@ -38,7 +38,7 @@ CREATE TABLE `products` (
   `name` varchar(255),
   `price` int,
   `status` ENUM ('out_of_stock', 'in_stock', 'running_low'),
-  `created_at` datetime DEFAULT (now())
+  `created_at` datetime DEFAULT now()
 );
 
 CREATE TABLE `payment` (

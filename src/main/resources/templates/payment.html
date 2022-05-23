@@ -36,48 +36,45 @@
                 <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
-                <!-- TODO: List products -->
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">TestProduct001</h6>
-                        <small class="text-muted">Product Description</small>
-                    </div>
-                    <span class="text-muted">$1000.00</span>
-                </li>
+                <th:block th:each="cartItem : ${cartItems.keySet()}">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed"
+                        th:with="quantity=${cartItems.get(cartItem)}">
+                        <div>
+                            <h6 class="my-0" th:text="${cartItem.name}"></h6>
+                            <small class="text-muted" th:text="${cartItem.name}"></small>
+                        </div>
+                        <div>
+                            <span class="text-muted" th:text="${quantity}"></span>
+                            <span class="text-muted" th:text="'$'+${cartItem.price}"></span>
+                        </div>
+                    </li>
+                </th:block>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <h6 class="my-0">Currency Selection: </h6>
                     <!-- Choose Currency Conversion -->
-                    <select class="selectpicker" data-live-search="true">
-                        <!-- Add currency choices -->
-                        <option data-tokens="Singapore Dollar">Singapore Dollar</option>
-                        <option data-tokens="US Dollar">US Dollar</option>
-                        <option data-tokens="British Pound">British Pound</option>
-                    </select>
+                    <form action="#" data-th-action="@{/payment}" class="form" method="post">
+                        <select class="selectpicker" data-live-search="true" name="currency">
+                            <!-- Add currency choices -->
+                            <option data-tokens="Singapore Dollar" value="SGD">Singapore Dollar</option>
+                            <option data-tokens="EUROS" value="EUR">EUROS</option>
+                        </select>
+                        <button class="btn btn-outline-secondary btn-sm btn-block mb-2" type="submit" name="conversion">
+                            Update currency
+                        </button>
+                    </form>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total</span>
-                    <strong>$1000.00</strong>
+                    <strong th:text="${totalPrice}"></strong>
                 </li>
             </ul>
         </div>
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Checkout</h4>
-            <form class="needs-validation" novalidate="">
-                <div class="mb-3">
-                    <label for="username">Username</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">@</span>
-                        </div>
-                        <input type="text" class="form-control" id="username" placeholder="Username" required="">
-                        <div class="invalid-feedback" style="width: 100%;">
-                            Your username is required.
-                        </div>
-                    </div>
-                </div>
+            <form action="#" data-th-action="@{/confirm}" class="form" method="post">
                 <div class="mb-3">
                     <label for="fullName">Full name</label>
-                    <input type="text" class="form-control" id="fullName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="fullName" placeholder="" value="" required="" name="fullname">
                     <div class="invalid-feedback">
                         Valid full name is required.
                     </div>
@@ -85,9 +82,10 @@
                 <div class="row">
                     <div class="col-md-5 mb-3">
                         <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required="">
-                            <option value="">Choose...</option>
-                            <option>United States</option>
+                        <select name="countryCode" class="custom-select d-block w-100" id="country" required="">
+                            <option value=0>Choose...</option>
+                            <option value=65>Singapore</option>
+                            <option value=49>Europe</option>
                         </select>
                         <div class="invalid-feedback">
                             Please select a valid country.

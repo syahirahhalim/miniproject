@@ -12,7 +12,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Order Interface</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -31,21 +32,22 @@
 <div class="container bootstrap snipets">
     <h1 class="text-center text-muted">Products</h1>
     <ul class="list-group">
-        <!-- TODO: List all products -->
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <div class="media d-block d-sm-flex text-center text-sm-left">
-                <div class="media-body pt-3">
-                    <h3 class="product-card-title font-weight-semibold border-0 pb-0">TestProduct001</h3>
-                    <div class="font-size-sm"><span class="text-muted mr-2">Product Description: </span>Product Description</div>
-                    <div class="font-size-lg text-primary pt-2">$1000.00</div>
+        <th:block th:each="product : ${products}">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="media d-block d-sm-flex text-center text-sm-left">
+                    <div class="media-body pt-3">
+                        <h3 class="product-card-title font-weight-semibold border-0 pb-0" th:text="${product.name}"></h3>
+                        <div class="font-size-sm"><span class="text-muted mr-2" th:text="'Product Description: '+${product.name}"></span></div>
+                        <div class="font-size-lg text-primary pt-2" th:text="'$'+${product.price}"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left" style="max-width: 10rem;">
-                <button class="btn btn-sm btn-success btn-block mb-2" type="button">
-                    Add to cart
-                </button>
-            </div>
-        </li>
+                <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left" style="max-width: 10rem;">
+                    <button class="btn btn-sm btn-success btn-block mb-2" type="button" th:onclick="'window.location.href=\'/addProduct/'+${product.id}+'?quantity=1\''">
+                        Add to cart
+                    </button>
+                </div>
+            </li>
+        </th:block>
     </ul>
 </div>
 
