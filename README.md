@@ -6,4 +6,3 @@
 
 ![Coverage](https://mehmehmeh.sgp1.digitaloceanspaces.com/coverage/miniproject/jacoco.svg)
 
-https://covfefeshop.herokuapp.com
